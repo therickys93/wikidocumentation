@@ -1,21 +1,14 @@
-# Welcome to MkDocs
+# Benvenuto sul progetto Wiki.
 
-This is a test site hosted on [GitLab Pages](https://pages.gitlab.io). You can
-[browse its source code](https://gitlab.com/pages/mkdocs), fork it and start
-using it on your projects.
+Questo sito serve per trovare informazioni su come installare il sistema Wiki in qualsiasi casa.
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
+## Parti fondamentali
 
-## Commands
+- wikiarduino
+- wikicontroller
+- wikiandroid
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+## Parti extra
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- wikimediaserver
+- wikiserver
