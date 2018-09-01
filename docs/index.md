@@ -4,7 +4,7 @@ Questo sito serve per trovare informazioni su come installare il sistema Wiki in
 
 ## Parti fondamentali
 
-- wikiarduino
+- [wikiarduino](arduino.md)
 - wikicontroller
 - wikiandroid
 
