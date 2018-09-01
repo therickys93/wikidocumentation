@@ -2,5 +2,6 @@ site_name: Progetto Wiki
 site_url: http://wiki.wiki.io/
 nav:
 - Home: 'index.md'
-- Arduino: 'arduino.md'
+- Arduino: 'wikiarduino.md'
 - Controller: 'wikicontroller.md'
+- Android: 'wikiandroid.md'

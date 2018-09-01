@@ -1,4 +1,4 @@
-# Wiki Controller
+# Controller
 
 ## Hardware
 
