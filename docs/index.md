@@ -10,5 +10,5 @@ Questo sito serve per trovare informazioni su come installare il sistema Wiki in
 
 ## Parti extra
 
-- wikimediaserver
-- wikiserver
+- [wikimediaserver](wikimediaserver.md)
+- [wikiserver](wikiserver.md)

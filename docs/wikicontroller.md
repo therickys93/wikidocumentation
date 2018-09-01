@@ -15,19 +15,19 @@ Come Harware è stato usato un semplice Raspberry Pi a 64 bit.
 - collegare cavo di rete e alimentazione a raspberry pi.
 - trovare indirizzo ip di raspberry pi dal router.
 - connettersi in ssh: username: pi password: raspberry ( possibilita di cambiare la password appena ci si logga ).
-- sudo apt update.
-- sudo apt upgrade -y.
-- sudo raspi-config - Expand File System
+- ```sudo apt update```.
+- ```sudo apt upgrade -y```.
+- ```sudo raspi-config``` - Expand File System
                     - Memory Split ( 16 )
                     - Change password ( non necessario ai fini del setup )
                     - Hostname ( non necessario ai fini del setup )
                     - Update
                     - Finish.
-- sudo reboot ( se non fatto appena si preme su finish ).
-- curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-- sudo apt install redis-server supervisor git nginx nodejs -y
+- ```sudo reboot``` ( se non fatto appena si preme su finish ).
+- ```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -```
+- ```sudo apt install redis-server supervisor git nginx nodejs -y```
 - nella configurazione di Redis modificare i seguenti parametri: bind 0.0.0.0 e protected-mode no.
-- sudo service redis-server restart
+- ```sudo service redis-server restart```
 
 ### Installazione
 
