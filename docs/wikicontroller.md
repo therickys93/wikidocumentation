@@ -34,3 +34,21 @@ Come Harware è stato usato un semplice Raspberry Pi a 64 bit.
 - clonare il repo
 - configurare nginx e supervisor ( i file di esempio si trovano nella cartella config/ ).
 - con supervisor avviare il programma.
+
+## API Endpoints
+
+```GET /``` -> mostra lo stato di wikicontroller.
+
+```GET /reset/:key``` -> resetta la chiave (key) nel database redis.
+
+```GET /on/:key/:led``` --> accende il led con la specifica chiave e nella posizione.
+
+```GET /off/:ley/:led``` --> spegne il led con la specifica chiave nella posizione.
+
+```GET /status/:key``` --> mostra lo stato della chiave.
+
+```POST /upload``` --> carica la configurazione delle luci.
+
+```GET /download``` --> scarica la configurazione delle luci.
+
+```GET /openclose/:key/:led``` --> accende e subito spegne il led con la specifica chiave nella posizione, simulando la pressione del bottone. (WIP)
