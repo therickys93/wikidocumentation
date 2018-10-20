@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://wiki.wiki.io/wikicontroller/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Controller - Progetto Wiki</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Progetto Wiki</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li >
+                                <a href="../wikiarduino/">Arduino</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Controller</a>
+                            </li>
+                            <li >
+                                <a href="../wikiandroid/">Android</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../wikiarduino/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../wikiandroid/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#controller">Controller</a></li>
+            <li><a href="#hardware">Hardware</a></li>
+            <li><a href="#software">Software</a></li>
+            <li><a href="#api-endpoints">API Endpoints</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="controller">Controller</h1>
+<h2 id="hardware">Hardware</h2>
+<p>Come Harware è stato usato un semplice Raspberry Pi a 64 bit.</p>
+<h2 id="software">Software</h2>
+<h3 id="requisiti">Requisiti</h3>
+<ul>
+<li>scaricare Raspbian version lite ( senza interfaccia grafica ).</li>
+<li>con Etcher mettere il file .img sulla scheda micro sd.</li>
+<li>riconnettere la scheda sd e inserire nella root il file vuoto ssh ( senza estensione ).</li>
+<li>togliere la scheda ed inserirla nell'apposita slot di raspberry pi.</li>
+<li>collegare cavo di rete e alimentazione a raspberry pi.</li>
+<li>trovare indirizzo ip di raspberry pi dal router.</li>
+<li>connettersi in ssh: username: pi password: raspberry ( possibilita di cambiare la password appena ci si logga ).</li>
+<li><code>sudo apt update</code>.</li>
+<li><code>sudo apt upgrade -y</code>.</li>
+<li><code>sudo raspi-config</code> - Expand File System
+                    - Memory Split ( 16 )
+                    - Change password ( non necessario ai fini del setup )
+                    - Hostname ( non necessario ai fini del setup )
+                    - Update
+                    - Finish.</li>
+<li><code>sudo reboot</code> ( se non fatto appena si preme su finish ).</li>
+<li><code>curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -</code></li>
+<li><code>sudo apt install redis-server supervisor git nginx nodejs -y</code></li>
+<li>nella configurazione di Redis modificare i seguenti parametri: bind 0.0.0.0 e protected-mode no.</li>
+<li><code>sudo service redis-server restart</code></li>
+</ul>
+<h3 id="installazione">Installazione</h3>
+<ul>
+<li>clonare il repo</li>
+<li>configurare nginx e supervisor ( i file di esempio si trovano nella cartella config/ ).</li>
+<li>con supervisor avviare il programma.</li>
+</ul>
+<h2 id="api-endpoints">API Endpoints</h2>
+<p><code>GET /</code> -&gt; mostra lo stato di wikicontroller.</p>
+<p><code>GET /reset/:key</code> -&gt; resetta la chiave (key) nel database redis.</p>
+<p><code>GET /on/:key/:led</code> --&gt; accende il led con la specifica chiave e nella posizione.</p>
+<p><code>GET /off/:ley/:led</code> --&gt; spegne il led con la specifica chiave nella posizione.</p>
+<p><code>GET /status/:key</code> --&gt; mostra lo stato della chiave.</p>
+<p><code>POST /upload</code> --&gt; carica la configurazione delle luci.</p>
+<p><code>GET /download</code> --&gt; scarica la configurazione delle luci.</p>
+<p><code>GET /openclose/:key/:led</code> --&gt; accende e subito spegne il led con la specifica chiave nella posizione, simulando la pressione del bottone. (WIP)</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
