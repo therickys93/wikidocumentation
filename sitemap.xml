@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>http://wiki.wiki.io/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://wiki.wiki.io/wikiarduino/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://wiki.wiki.io/wikicontroller/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://wiki.wiki.io/wikiandroid/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
